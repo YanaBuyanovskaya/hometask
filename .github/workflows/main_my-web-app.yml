@@ -24,12 +24,10 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        working-directory: ./UserCardsMVC
-        run: dotnet build --configuration Release
+        run: dotnet build UserCardsMVC/UserCardsMVC.csproj -c Release
 
       - name: dotnet publish
-        working-directory: ./UserCardsMVC
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish UserCardsMVC/UserCardsMVC.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
